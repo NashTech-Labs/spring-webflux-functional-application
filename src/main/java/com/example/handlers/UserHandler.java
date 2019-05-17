@@ -36,7 +36,7 @@ public class UserHandler {
     public Mono<ServerResponse> getUser(ServerRequest request) {
         final int id = Integer.parseInt(request.pathVariable("userId"));
         final Mono<User> user = userRepository.findById(id);
-        return user.flatMap(p -> ok().contentType(APPLICATION_JSON)
+        return user.flatMap(usr -> ok().contentType(APPLICATION_JSON)
                 .body(fromPublisher(user, User.class)))
                 .switchIfEmpty(notFound().build());
     }
