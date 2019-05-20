@@ -4,20 +4,20 @@ As an example, a basic user based application is created in this project with so
 
 
 
-How to run:
+## How to run:
 
-Run cassandra
-Run application with command mvn spring-boot:run
+ 1. Run cassandra
+ 2. Run application with command mvn spring-boot:run
 
-Rest End-Points:
+## Rest End-Points: 
 
-Add User:
-POST URL: localhost:8080/users
-Request Body:
-{ "id": 1, "name": "XYZ", "email": "xyz@gmail.com"}
+1. Add User:
+   POST URL: localhost:8080/users
+   Request Body:
+   { "id": 1, "name": "XYZ", "email": "xyz@gmail.com"}
 
-Get User By Id:
-GET URL: localhost:8080/users/{id}
+2. Get User By Id:
+   GET URL: localhost:8080/users/{id}
 
-Get users:
-GET URL: localhost:8080/users
+3. Get users:
+   GET URL: localhost:8080/users
