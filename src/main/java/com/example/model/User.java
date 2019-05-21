@@ -8,7 +8,8 @@ import lombok.Getter;
 
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 @Getter
@@ -19,11 +20,13 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("user")
 public class User {
 
-    @Id
+    @PrimaryKey
     int id;
 
+    @Column
     String name;
 
+    @Column
     String email;
 
 }
