@@ -2,14 +2,13 @@ package com.example.handlers;
 
 import com.example.model.User;
 import com.example.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import reactor.core.publisher.Mono;
-
-import javax.inject.Inject;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.BodyInserters.fromPublisher;
@@ -19,13 +18,8 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @Component
 public class UserHandler {
 
-    private final UserRepository userRepository;
-
-    @Inject
-    public UserHandler(UserRepository userRepository) {
-
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     public Mono<ServerResponse> createUser(ServerRequest request) {
         Mono<User> user = request.bodyToMono(User.class);
