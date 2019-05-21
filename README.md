@@ -12,6 +12,7 @@ As an example, a basic user based application is created in this project with so
 ## Rest End-Points: 
 
 1. Add User:
+
    POST URL: localhost:8080/users
    Request Body:
    { "id": 1, "name": "XYZ", "email": "xyz@gmail.com"}
