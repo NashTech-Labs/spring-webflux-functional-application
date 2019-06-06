@@ -2,12 +2,11 @@ package com.example.handlers;
 
 import com.example.model.User;
 import com.example.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -16,9 +15,9 @@ import static org.springframework.web.reactive.function.server.ServerResponse.no
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 @Component
+@AllArgsConstructor
 public class UserHandler {
 
-    @Autowired
     private UserRepository userRepository;
 
     public Mono<ServerResponse> createUser(ServerRequest request) {
@@ -28,7 +27,7 @@ public class UserHandler {
     }
 
     public Mono<ServerResponse> getUser(ServerRequest request) {
-        final int id = Integer.parseInt(request.pathVariable("userId"));
+        final int id = Integer.parseInt(request.pathVariable("id"));
         final Mono<User> user = userRepository.findById(id);
         return user.flatMap(usr -> ok().contentType(APPLICATION_JSON)
                 .body(fromPublisher(user, User.class)))

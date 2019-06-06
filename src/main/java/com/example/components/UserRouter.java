@@ -23,4 +23,5 @@ public class UserRouter {
                         .GET("", accept(MediaType.APPLICATION_JSON), userHandler::getUsers))
                 .build();
     }
+
 }
